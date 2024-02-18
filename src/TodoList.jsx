@@ -23,10 +23,10 @@ const TodoList = () => {
     <div>
     <h1>Todo List</h1>
 
-      <ul>
+    <ul className="list-group">
         {todoList.map(function (item) {
           return (
-            <li key={item.id}>{item.title}</li>
+            <li className="list-group-item hover-overlay thumbnail fw-bolder" key={item.id}>{item.title}</li>
             
           
             );
