@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import './TodoList'
 import TodoList from './TodoList'
+import { AddTodoForm } from './AddTodoForm'
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   return (
     <>
       <TodoList />
+      <AddTodoForm />
         
     </>
     );
