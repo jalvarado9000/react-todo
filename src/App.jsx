@@ -15,6 +15,7 @@ function App() {
     <>
       <TodoList />
       <AddTodoForm />
+      {/*on lesson 2 */}
         
     </>
     );
