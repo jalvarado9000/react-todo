@@ -9,11 +9,27 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 
 function App() {
+  const todoList = [
+    {
+      id: 1,
+      title: 'Complete Assigment',
+  
+    },
+    {
+      id: 2,
+      title: 'Complete Homework',
+    },
+    {
+      id: 3,
+      title: 'Complete Projects',
+    },
+  
+  ]
  
 
   return (
     <>
-      <TodoList />
+      <TodoList todo={todoList}/>
       <AddTodoForm />
         
     </>
