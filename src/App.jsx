@@ -28,15 +28,12 @@ function App() {
     setSearch(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('Form submitted with title:', search);
-  };
+
 
   return (
     <>
       <TodoList onTodo={todoList}/>
-      <AddTodoForm onSubmit={handleSubmit} onSearch={handleSearch} />
+      <AddTodoForm />
     </>
   );
 }
