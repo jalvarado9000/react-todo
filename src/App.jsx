@@ -24,8 +24,14 @@ function App() {
   ];
 
   const [search, setSearch] = useState(''); 
+  const [newTodo, setNewTodo] = useState(''); 
+  
   const handleSearch = (event) => {
-    setSearch(event.target.value);
+    setSearch(event.target.elements.title.value);
+  };
+
+  const handleAddTodo = (todoTitle) => {
+    setNewTodo(todoTitle); 
   };
 
 
@@ -33,7 +39,9 @@ function App() {
   return (
     <>
       <TodoList onTodo={todoList}/>
-      <AddTodoForm />
+      <AddTodoForm onAddTodo={handleAddTodo}/>
+      <p>{newTodo}</p>
+
     </>
   );
 }
