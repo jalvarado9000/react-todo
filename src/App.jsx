@@ -36,7 +36,7 @@ function App() {
   return (
     <>
       <TodoList onTodo={todoList}/>
-      <AddTodoForm onSubmit={handleSearch} onSearch={handleSubmit} />
+      <AddTodoForm onSubmit={handleSubmit} onSearch={handleSearch} />
     </>
   );
 }
