@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import {AddTodoForm} from './AddTodoForm'
-import {TodoList} from './TodoList'
+
+import TodoList from './TodoList';
+
+{/* what is the difference between exporting with parenthesis and without it? */}
 
 function App() {
   const todoList = [
@@ -32,7 +35,7 @@ function App() {
 
   return (
     <>
-      <TodoList onTodo={todoList} />
+      <TodoList onTodo={todoList}/>
       <AddTodoForm onSubmit={handleSearch} onSearch={handleSubmit} />
     </>
   );
