@@ -12,7 +12,7 @@ const TodoList = (props) => {
     <h1>Todo List</h1>
 
     <ul className="list-group">
-        {props.todo.map((item) => {
+        {props.onTodo.map((item) => {
           return (
             
             <TodoListItem key={item.id} item={item}/>

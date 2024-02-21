@@ -1,17 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useState } from 'react';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import {AddTodoForm} from './AddTodoForm'
 import {TodoList} from './TodoList'
-import  {AddTodoForm}  from './AddTodoForm'
-import 'bootstrap/dist/css/bootstrap.css'
-
 
 function App() {
   const todoList = [
     {
       id: 1,
-      title: 'Complete Assigment',
-  
+      title: 'Complete Assignment',
     },
     {
       id: 2,
@@ -21,24 +18,24 @@ function App() {
       id: 3,
       title: 'Complete Projects',
     },
-  
-  ]
+  ];
 
-   let [search, setSearch] = React.useState(' ');
-
+  const [search, setSearch] = useState(''); 
   const handleSearch = (event) => {
     setSearch(event.target.value);
+  };
 
-  }
- 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('Form submitted with title:', search);
+  };
 
   return (
     <>
-      <TodoList todo={todoList}/>
-      <AddTodoForm onSearch={handleSearch} />
-        
+      <TodoList onTodo={todoList} />
+      <AddTodoForm onSubmit={handleSearch} onSearch={handleSubmit} />
     </>
-    );
-  }
+  );
+}
 
-export default App
+export default App;
