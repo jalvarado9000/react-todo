@@ -13,14 +13,17 @@ export const AddTodoForm = (props) => {
   const handleAddTodo  = (event) => {
     event.preventDefault();
 
-    setTodoTitle(event.target.value);
+    setTodoTitle(event.target.elements.title.value);
     console.log(todoTitle);
 
+    event.target.reset();
     props.onAddTodo(todoTitle);
     
    
    
   };
+
+  
 
  
 
@@ -33,7 +36,7 @@ export const AddTodoForm = (props) => {
           <label htmlFor={todoTitle} className="h5 m-1 mt-3">
             Title
           </label>
-          <input name="title" type="text" id={todoTitle} onChange={handleAddTodo} />
+          <input name="title" type="text" id={todoTitle} />
           <input type="submit" className="btn btn-primary m-1 mb-2" value="Add"  />
         </form>
 
