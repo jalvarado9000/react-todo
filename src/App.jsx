@@ -26,13 +26,10 @@ function App() {
   const [search, setSearch] = useState(''); 
   const [newTodo, setNewTodo] = useState(''); 
   
-  const handleSearch = (event) => {
-    setSearch(event.target.elements.title.value);
+  const handleAddTodo = (todoTitle) => {
+    setNewTodo(todoTitle);
   };
 
-  const handleAddTodo = (todoTitle) => {
-    setNewTodo(todoTitle); 
-  };
 
 
 
