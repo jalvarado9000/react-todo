@@ -9,6 +9,11 @@ export const AddTodoForm = (props) => {
   const [todoTitle, setTodoTitle] = React.useState('');
  
 
+  const handleTitleChange = (event) =>{
+
+    let newTodoTitle = event.title.value;
+    setTodoTitle(newTodoTitle);
+  };
  
 
   const handleAddTodo  = (event) => {
@@ -39,7 +44,7 @@ export const AddTodoForm = (props) => {
           <label htmlFor={todoTitle} className="h5 m-1 mt-3">
             Title
           </label>
-          <input name="title" type="text" id={todoTitle} />
+        <input name="title" type="text" id={todoTitle} value={todoTitle} onChange={handleTitleChange} />
           <input type="submit" className="btn btn-primary m-1 mb-2" value="Add" />
         </form>
 
