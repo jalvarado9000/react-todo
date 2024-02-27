@@ -9,6 +9,21 @@ import TodoList from './TodoList';
 
 function App() {
 
+  const todoListy = [
+    {
+      id: 1,
+      title: 'Complete Assignment',
+    },
+    {
+      id: 2,
+      title: 'Complete Homework',
+    },
+    {
+      id: 3,
+      title: 'Complete Projects',
+    },
+  ];
+
 
 
   const [newTodo, setNewTodo] = React.useState('');
@@ -28,8 +43,8 @@ function App() {
   return (
     <>
       <h1>hello</h1>
-      <TodoList todoList={todoList} />
-      <AddTodoForm onAddTodo={handleAddTodo} />
+      <TodoList todoList={todoListy} />
+      <AddTodoForm onAddTodo={addTodo} />
 
 
     </>

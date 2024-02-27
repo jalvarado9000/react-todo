@@ -6,7 +6,9 @@ import TodoListItem  from './TodoListItem'
 
 export const TodoList = (props) => {
 
-  
+  const todoList = props.todoList;
+
+  const {id} = item;
 
   return (
     <div>
@@ -14,10 +16,10 @@ export const TodoList = (props) => {
 
 
       <ul className="list-group">
-        {props.todoList.map((item) => {
+        {todoList.map((item) => {
           return (
 
-            <TodoListItem key={item.id} item={item} />
+            <TodoListItem key={id} item={item} />
 
           );
         })}
