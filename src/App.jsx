@@ -8,23 +8,11 @@ import TodoList from './TodoList';
 {/* what is the difference between exporting with parenthesis and without it? */}
 
 function App() {
-  const todoList = [
-    {
-      id: 1,
-      title: 'Complete Assignment',
-    },
-    {
-      id: 2,
-      title: 'Complete Homework',
-    },
-    {
-      id: 3,
-      title: 'Complete Projects',
-    },
-  ];
+
 
 
   const [newTodo, setNewTodo] = useState(''); 
+  const [todoList, setTodoList] = React.useState('');
   
   const handleAddTodo = (todoTitle) => {
     setNewTodo(todoTitle);
@@ -35,7 +23,7 @@ function App() {
 
   return (
     <>
-      <TodoList onTodo={todoList}/>
+      <TodoList todoList={todoList}/>
       <AddTodoForm onAddTodo={handleAddTodo}/>
       <p>{newTodo}</p>
 
