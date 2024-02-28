@@ -2,7 +2,8 @@ import React from 'react'
 
 const TodoList = () => {
   return (
-    <div>TodoList</div>
+    <div>
+      <h1>TodoList</h1></div>
   )
 }
 
