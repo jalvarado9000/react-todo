@@ -4,9 +4,9 @@ import { TodoListItem } from './TodoListItem';
 
 
 
-export const TodoList = ({onTodo}) => {
+const TodoList = ({onTodo}) => {
 
-  const todoList = props.todoList;
+
 
   
 
@@ -28,3 +28,4 @@ export const TodoList = ({onTodo}) => {
   )
 }
 
+export default TodoList;

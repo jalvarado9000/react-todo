@@ -6,7 +6,7 @@ export const AddTodoForm = ({onAddTodo}) => {
 
 
 
-  const [todoTitle, setTodoTitle] = React.useState('');
+  const [todoTitle, setTodoTitle] = useState('');
 
 
   const handleTitleChange = (event) => {
@@ -18,12 +18,13 @@ export const AddTodoForm = ({onAddTodo}) => {
 
   const handleAddTodo = (event) => {
 
-    let obj = {
+    event.preventDefault();
+    let newTodo = {
       title: todoTitle,
       id: Date.now(),
     };
 
-    event.preventDefault();
+
 
     
     onAddTodo(newTodo);
