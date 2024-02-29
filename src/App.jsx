@@ -9,32 +9,17 @@ import TodoList from './TodoList';
 
 function App() {
 
-  const todoListy = [
-    {
-      id: 1,
-      title: 'Complete Assignment',
-    },
-    {
-      id: 2,
-      title: 'Complete Homework',
-    },
-    {
-      id: 3,
-      title: 'Complete Projects',
-    },
-  ];
 
 
 
-  const [newTodo, setNewTodo] = React.useState('');
-  const [todoList, setTodoList] = React.useState('');
 
-  const handleAddTodo = (todoTitle) => {
-    setNewTodo(todoTitle);
-  };
 
-  const addTodo = (newTodo) => {
-    setTodoList([...todoList], newTodo);
+  const [todoList, setTodoList] = React.useState([]);
+
+
+
+  const handleAddTodo = (newTodo) => {
+    setTodoList([...todoList, newTodo]);
   };
 
 
@@ -42,9 +27,9 @@ function App() {
 
   return (
     <>
-      <h1>hello</h1>
-      <TodoList todoList={todoListy} />
-      <AddTodoForm onAddTodo={addTodo} />
+     
+      <TodoList todoList={todoList} />
+      <AddTodoForm onAddTodo={handleAddTodo} />
 
 
     </>

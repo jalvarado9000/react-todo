@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-export const AddTodoForm = (props) => {
+export const AddTodoForm = ({onAddTodo}) => {
 
 
 
@@ -11,7 +11,7 @@ export const AddTodoForm = (props) => {
 
   const handleTitleChange = (event) => {
 
-    let newTodoTitle = event.title.value;
+    let newTodoTitle = event.target.value;
     setTodoTitle(newTodoTitle);
   };
 
@@ -20,16 +20,13 @@ export const AddTodoForm = (props) => {
 
     let obj = {
       title: todoTitle,
-      id: Date.now()
-    }
+      id: Date.now(),
+    };
 
     event.preventDefault();
 
-    setTodoTitle(event.target.elements.title.value);
-    console.log(todoTitle);
-
-
-    props.onAddTodo({ ...obj });
+    
+    onAddTodo(newTodo);
     setTodoTitle('');
 
 

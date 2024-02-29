@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const TodoListItem = (props) => {
+export const TodoListItem = ({ item }) => {
 
-  const { id, title } = props.item;
+
   return (
-    <div><li className="list-group-item hover-overlay thumbnail fw-bolder" key={id}>{title}</li></div>
+    <div><li className="list-group-item hover-overlay thumbnail fw-bolder" key={item.id}>{item.title}</li></div>
   )
 }
