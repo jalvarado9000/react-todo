@@ -6,7 +6,6 @@ import { AddTodoForm } from './AddTodoForm'
 import TodoList from './TodoList';
 import { TodoListItem } from './TodoListItem';
 
-{/* what is the difference between exporting with parenthesis and without it? */ }
 
 function App() {
   const todoList = [
