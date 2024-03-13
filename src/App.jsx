@@ -6,26 +6,18 @@ import TodoList from './TodoList';
 
 
 function App() {
-
-
   const [todoList, setTodoList] = useState([]);
 
-
-
   const handleAddTodo = (newTodo) => {
-    setTodoList((prevTodoList) => [...prevTodoList, newTodo]);
+    setTodoList((prevTodoList) => {
+      return ([...prevTodoList, newTodo])
+    });
   };
-
-
-
 
   return (
     <>
-
       <TodoList onTodo={todoList} />
       <AddTodoForm onAddTodo={handleAddTodo} />
-
-
     </>
   );
 }
