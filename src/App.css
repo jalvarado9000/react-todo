@@ -5,6 +5,14 @@
   text-align: center;
 }
 
+/*Added*/
+.thumbnail:hover {
+  background-color: red;
+  opacity: 1;
+  }
+
+  /*Added*/
+
 .logo {
   height: 6em;
   padding: 1.5em;

@@ -1,42 +1,22 @@
-import * as React from 'react';
+
+import './App.css'
+import './TodoList'
 import TodoList from './TodoList'
+import { AddTodoForm } from './AddTodoForm'
+import 'bootstrap/dist/css/bootstrap.css'
 
-const todoList = [
-  {
-    id: 1,
-    title: 'Complete Assigment',
-
-  },
-  {
-    id: 2,
-    title: 'Complete Homework',
-  },
-  {
-    id: 3,
-    title: 'Complete Projects',
-  },
-
-]
 
 function App() {
- 
+
 
   return (
     <>
-      <TodoList/>
+      <TodoList />
+      <AddTodoForm />
+      
 
-      <ul>
-        {todoList.map(function (item) {
-          return (
-            <li key={item.id}>{item.title}</li>
-            
-          
-            );
-        })}
-      </ul>
-        
     </>
-    );
-  }
+  );
+}
 
 export default App
