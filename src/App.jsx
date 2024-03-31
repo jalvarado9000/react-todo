@@ -3,8 +3,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { AddTodoForm } from './AddTodoForm'
 import TodoList from './TodoList';
-import { TodoListItem } from './TodoListItem';
-
 
 function useSemiPersistentState(key, initialState) {
 
@@ -17,26 +15,18 @@ function useSemiPersistentState(key, initialState) {
     localStorage.setItem(key, JSON.stringify(todoList));
   }, [todoList])
 
- return [todoList, setTodoList];
-
+  return [todoList, setTodoList];
 }
 
-
-
 function App() {
- 
-  const [todoList, setTodoList] = useSemiPersistentState('savedTodoList',[]);
 
-
-
+  const [todoList, setTodoList] = useSemiPersistentState('savedTodoList', []);
 
   const handleAddTodo = (newTodo) => {
     setTodoList((prevTodoList) => {
       return ([...prevTodoList, newTodo])
     });
   };
-
-  
 
 
   return (
