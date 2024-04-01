@@ -13,7 +13,7 @@ function useSemiPersistentState(key, initialState) {
 
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(todoList));
-  }, [todoList])
+  }, [key, todoList])
 
   return [todoList, setTodoList];
 }
@@ -28,17 +28,9 @@ function App() {
     });
   };
 
-  const removeTodo =(id)=> {
-
-    
-    setTodoList(todoList.filter((element) => {
-      element.id == id
-    }))
-
-
+  const removeTodo = (id) => {
+    setTodoList((todoList) => todoList.filter((element) => element.id !== id))
   }
-
-
 
 
   return (
