@@ -1,9 +1,12 @@
 import React from 'react'
 
-export const TodoListItem = ({ item }) => {
+export const TodoListItem = ({ item, onRemoveTodo }) => {
 
 
   return (
-    <div><li className="list-group-item hover-overlay thumbnail fw-bolder" key={item.id}>{item.title}</li></div>
+    <>
+      <li className="list-group-item hover-overlay thumbnail fw-bolder" key={item.id}>{item.title} <button onClick={onRemoveTodo}>Remove</button></li>
+    
+    </>
   )
 }
