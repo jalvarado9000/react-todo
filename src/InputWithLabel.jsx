@@ -2,13 +2,13 @@ import React from 'react'
 
 export const InputWithLabel = ({ todoTitle, handleTitleChange, isFocused, children }) => {
 
-    const inputRef = React.useRef(null);
+    const inputRef = React.useRef();
 
     React.useEffect(() => {
         if (isFocused && inputRef.current) {
             inputRef.current.focus();
         }
-    }, [isFocused]);
+    }, [isFocused, todoTitle]);
 
     return (
         <>
