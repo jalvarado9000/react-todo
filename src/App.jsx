@@ -4,23 +4,44 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { AddTodoForm } from './AddTodoForm'
 import TodoList from './TodoList';
 
-function useSemiPersistentState(key, initialState) {
 
-  const [todoList, setTodoList] = useState(() => {
-    const savedTodoList = localStorage.getItem(key);
-    return savedTodoList ? JSON.parse(savedTodoList) : initialState;
-  });
-
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(todoList));
-  }, [key, todoList])
-
-  return [todoList, setTodoList];
-}
 
 function App() {
 
-  const [todoList, setTodoList] = useSemiPersistentState('savedTodoList', []);
+  const key = 'savedTodoList';
+  const initialState = [];
+
+
+  const [todoList, setTodoList] = useState(initialState);
+  const [isLoading, setIsLoading] = useState(true);
+
+
+
+  useEffect(() => {
+    const fetchData = new Promise((resolve) => {
+      const savedTodoList = localStorage.getItem(key);
+      const updatedInitialState = savedTodoList ? JSON.parse(savedTodoList) : initialState;
+      setTimeout(() => {
+        resolve({ data: { todoList: updatedInitialState } });
+      }, 2000);
+    });
+
+    fetchData.then((result) => {
+      setTodoList(result.data.todoList)
+      setIsLoading(false);
+    });
+  }, []);
+
+
+  useEffect(() => {
+    if (!isLoading) {
+      localStorage.setItem(key, JSON.stringify(todoList));
+    }
+
+  }, [todoList, isLoading])
+
+
+
 
   const handleAddTodo = (newTodo) => {
     setTodoList((prevTodoList) => {
@@ -35,8 +56,14 @@ function App() {
 
   return (
     <>
-      <TodoList onTodo={todoList} onRemoveTodo={removeTodo} />
-      <AddTodoForm onAddTodo={handleAddTodo} />
+      {isLoading ?
+        (<p>Loading...</p>) :
+        (<>
+          <TodoList onTodo={todoList} onRemoveTodo={removeTodo} />
+          <AddTodoForm onAddTodo={handleAddTodo} />
+        </>)
+      }
+
     </>
   );
 }
