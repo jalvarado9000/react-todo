@@ -18,11 +18,11 @@ function App() {
 
 
 
-  const loadTodo = async() =>{
+  const loadTodo = async () => {
     const baseId = `${import.meta.env.VITE_AIRTABLE_BASE_ID}`;
     const tableName = `${import.meta.env.VITE_TABLE_NAME}`
     const baseUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`;
-  
+
 
     try {
       const response = await
@@ -72,8 +72,8 @@ function App() {
       setTodoList(result.data.todoList)
       setIsLoading(false);
     }).catch(() => setIsError(true))
-    
-  },[]);
+
+  }, []);
 
 
   useEffect(() => {
