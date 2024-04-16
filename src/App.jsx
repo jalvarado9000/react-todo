@@ -36,16 +36,11 @@ function App() {
         }
         const data = await response.json();
 
-        console.log(data);
-
         const todos = data.records.map(record => ({
           title: record.fields.title,
           id: record.id,
 
         }));
-
-        console.log(todos[0].id);
-
 
         setTodoList(todos);
 
