@@ -1,45 +1,40 @@
-import React, { useState, useEffect } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import { AddTodoForm } from './AddTodoForm'
-import TodoList from './TodoList';
+import { New } from './New'
+import { RootLayout } from './RootLayout'
+import { MainPage } from './MainPage'
 
-function useSemiPersistentState(key, initialState) {
-
-  const [todoList, setTodoList] = useState(() => {
-    const savedTodoList = localStorage.getItem(key);
-    return savedTodoList ? JSON.parse(savedTodoList) : initialState;
-  });
-
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(todoList));
-  }, [key, todoList])
-
-  return [todoList, setTodoList];
-}
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider
+} from 'react-router-dom'
 
 function App() {
 
-  const [todoList, setTodoList] = useSemiPersistentState('savedTodoList', []);
+  /* Using router 6.4 we are routing are components to display our webpage */
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      /* RootLayout is the component that has our page structure */
+      <Route path="/" element={<RootLayout />}>
 
-  const handleAddTodo = (newTodo) => {
-    setTodoList((prevTodoList) => {
-      return ([...prevTodoList, newTodo])
-    });
-  };
+        {/* this route to register user */}
+        <Route index element={<MainPage />} />
 
-  const removeTodo = (id) => {
-    setTodoList((todoList) => todoList.filter((element) => element.id !== id))
-  }
+        {/* when the user successfully login they would enter their dashboard page */}
+        <Route path="new" element={<New />} />
+      </Route>
+    )
+  )
 
 
   return (
     <>
-      <TodoList onTodo={todoList} onRemoveTodo={removeTodo} />
-      <AddTodoForm onAddTodo={handleAddTodo} />
+      {/* lets us display the routers pages on our app */}
+      <RouterProvider router={router} />
     </>
   );
 }
 
 export default App;
-

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { InputWithLabel } from './InputWithLabel'
 
-export const AddTodoForm = ({ onAddTodo }) => {
+export const AddTodoForm = ({ onAddTodo, postTodo }) => {
   const [todoTitle, setTodoTitle] = useState('');
 
   const handleTitleChange = (event) => {
@@ -15,7 +15,7 @@ export const AddTodoForm = ({ onAddTodo }) => {
       title: todoTitle,
       id: Date.now(),
     };
-    
+    postTodo(newTodo);
     onAddTodo(newTodo);
     setTodoTitle('');
   };
