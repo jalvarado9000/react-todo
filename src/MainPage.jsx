@@ -13,7 +13,7 @@ export function MainPage() {
     const AIRTABLE_BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID;
     const TABLE_NAME = import.meta.env.VITE_TABLE_NAME;
 
-   
+
     useEffect(() => {
         const fetchData = async () => {
 
@@ -34,24 +34,15 @@ export function MainPage() {
 
                 }
                 const data = await response.json();
-
-                console.log(data);
-
                 const todos = data.records.map(record => ({
                     title: record.fields.title,
                     id: record.id,
 
                 }));
-
-                console.log(todos[0].id);
-
-
                 setTodoList(todos);
 
             } catch (error) {
                 console.error(error.message);
-
-
             }
 
             setIsLoading(false);
@@ -60,10 +51,6 @@ export function MainPage() {
         fetchData();
 
     }, []);
-
-
-
-
 
     const postTodo = async (newTodo) => {
         try {
@@ -78,7 +65,6 @@ export function MainPage() {
                 ]
             }
 
-
             const response = await fetch(
                 `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${TABLE_NAME}`,
                 {
@@ -90,8 +76,6 @@ export function MainPage() {
                     body: JSON.stringify(airtableData),
                 }
             );
-
-
 
             if (!response.ok) {
                 const message = `Error has ocurred:
@@ -107,8 +91,6 @@ export function MainPage() {
         }
     };
 
-
-
     useEffect(() => {
         if (!isLoading) {
             localStorage.setItem(key, JSON.stringify(todoList));
@@ -123,15 +105,15 @@ export function MainPage() {
         setTodoList((todoList) => todoList.filter((element) => element.id !== id));
     };
 
-  return (
-    
-      <>{isLoading ? (
-          <p>Loading...</p>
-      ) : (
-          <>
-              <TodoList onTodo={todoList} onRemoveTodo={removeTodo} />
-              <AddTodoForm onAddTodo={handleAddTodo} postTodo={postTodo} />
-          </>
-      )}</>
-  )
+    return (
+
+        <>
+            {isLoading ? (<p>Loading...</p>) : (
+                <>
+                    <AddTodoForm onAddTodo={handleAddTodo} postTodo={postTodo} />
+                    <TodoList onTodo={todoList} onRemoveTodo={removeTodo} />
+                </>
+            )}
+        </>
+    )
 }

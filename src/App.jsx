@@ -24,9 +24,6 @@ function App() {
 
         {/* when the user successfully login they would enter their dashboard page */}
         <Route path="new" element={<New />} />
-
-
-
       </Route>
     )
   )
@@ -34,8 +31,6 @@ function App() {
 
   return (
     <>
-
-
       {/* lets us display the routers pages on our app */}
       <RouterProvider router={router} />
     </>

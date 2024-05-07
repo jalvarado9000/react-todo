@@ -17,10 +17,6 @@ export const AddTodoForm = ({ onAddTodo, postTodo }) => {
     };
     postTodo(newTodo);
     onAddTodo(newTodo);
-    
-
-    
-    
     setTodoTitle('');
   };
 
